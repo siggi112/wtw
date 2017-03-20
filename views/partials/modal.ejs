@@ -1,0 +1,53 @@
+<!-- Modal -->
+         <div class="modal fade" id="movie-{{movie.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title"><strong>{{movie.title}}</strong>  ({{movie.release_date | date:'yyyy'}})</h4>
+               </div>
+               <div class="modal-body">
+               <div id="movieTrailer-{{movie.id}}" class="videoWrapper">
+                 <div ng-show="movie.vote_average > 7" class="progress green">
+                 <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width: calc({{movie.vote_average}}% * 10);">
+                 <span class="progress-value"><strong>{{movie.vote_average | number:1}}</strong></span>
+                 </div>
+               </div>
+               <div ng-hide="!(movie.vote_average > 5 && movie.vote_average < 7)" class="progress yellow">
+                 <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width: calc({{movie.vote_average}}% * 10);">
+                 <span class="progress-value"><strong>{{movie.vote_average | number:1}}</strong></span>
+                 </div>
+               </div>
+               <div ng-show="movie.vote_average < 5" class="progress red">
+                 <div class="progress-bar" data-percentage="({{movie.vote_average}} * 10))" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="width: calc({{movie.vote_average}}% * 10);">
+                 <span class="progress-value"><strong>{{movie.vote_average | number:1}}</strong></span>
+                 </div>
+               </div>
+               <ul ng-repeat="n in movie.genre_ids track by $index" class="movie-genere-loop" style="float:left">
+                 <li ng-show="{{n}} === 28" class="badge">Action</li>
+                 <li ng-show="{{n}} === 12" class="badge">Adventure</li>
+                 <li ng-show="{{n}} === 16" class="badge">Animation</li>
+                 <li ng-show="{{n}} === 35" class="badge">Comedy</li>
+                 <li ng-show="{{n}} === 80" class="badge">Crime</li>
+                 <li ng-show="{{n}} === 99" class="badge">Documentary</li>
+                 <li ng-show="{{n}} === 18" class="badge">Drama</li>
+                 <li ng-show="{{n}} === 10751" class="badge">Family</li>
+                 <li ng-show="{{n}} === 14" class="badge">Fantasy</li>
+                 <li ng-show="{{n}} === 10769" class="badge">Foreign</li>
+                 <li ng-show="{{n}} === 36" class="badge">History</li>
+                 <li ng-show="{{n}} === 27" class="badge">Horror</li>
+                 <li ng-show="{{n}} === 10402" class="badge">Music</li>
+                 <li ng-show="{{n}} === 9648" class="badge">Mystery</li>
+                 <li ng-show="{{n}} === 10749" class="badge">Romance</li>
+                 <li ng-show="{{n}} === 878" class="badge">Science Fiction</li>
+                 <li ng-show="{{n}} === 10770" class="badge">TV Movie</li>
+                 <li ng-show="{{n}} === 53" class="badge">Thriller</li>
+                 <li ng-show="{{n}} === 10752" class="badge">War</li>
+                 <li ng-show="{{n}} === 37" class="badge">Western</li>
+               </ul>
+                 <p class="movie-overview">{{movie.overview}}</p>
+               </div>
+               </div>
+             </div><!-- /.modal-content -->
+           </div><!-- /.modal-dialog -->
+         </div><!-- /.modal -->  
